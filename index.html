@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Generador Personalizado de Enunciados</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f0f0f0;
+      text-align: center;
+      padding: 50px;
+    }
+    h1 {
+      color: #333;
+    }
+    .frase {
+      font-size: 1.5em;
+      margin: 30px;
+      color: #444;
+    }
+    button {
+      background-color: #007BFF;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    textarea {
+      width: 90%;
+      max-width: 500px;
+      margin: 10px auto;
+      display: block;
+      height: 60px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Generador Personalizado de Enunciados</h1>
+
+  <p>Introduce tus propios sujetos, verbos y lugares separados por comas:</p>
+
+  <label>Sujetos:</label>
+  <textarea id="sujetosInput">El perro, Mi hermana, Un robot</textarea>
+
+  <label>Verbos:</label>
+  <textarea id="verbosInput">corre, canta, explora</textarea>
+
+  <label>Lugares:</label>
+  <textarea id="lugaresInput">en el parque, en Marte, en casa</textarea>
+
+  <button onclick="generarFrase()">Generar Enunciado</button>
+
+  <div class="frase" id="frase">Haz clic para ver un enunciado generado.</div>
+
+  <script>
+    function generarFrase() {
+      const sujetos = document.getElementById("sujetosInput").value.split(",").map(s => s.trim());
+      const verbos = document.getElementById("verbosInput").value.split(",").map(s => s.trim());
+      const lugares = document.getElementById("lugaresInput").value.split(",").map(s => s.trim());
+
+      const sujeto = sujetos[Math.floor(Math.random() * sujetos.length)];
+      const verbo = verbos[Math.floor(Math.random() * verbos.length)];
+      const lugar = lugares[Math.floor(Math.random() * lugares.length)];
+
+      document.getElementById("frase").textContent = `${sujeto} ${verbo} ${lugar}.`;
+    }
+  </script>
+</body>
+</html>
